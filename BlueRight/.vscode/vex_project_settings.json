@@ -1,0 +1,18 @@
+{
+	"project": {
+		"name": "BlueRight",
+		"slot": 3,
+		"description": "",
+		"platform": "V5",
+		"creationDate": "Fri, 28 Feb 2025 13:52:27 GMT",
+		"language": "python",
+		"python": {
+			"main": "/src/main.py"
+		},
+		"sdkVersion": "V5_1_0_1_25"
+	},
+	"extension": {
+		"version": "0.6.1",
+		"json": 1
+	}
+}
