@@ -12,6 +12,8 @@ L3 = Motor(Ports.PORT3, GearSetting.RATIO_6_1, False)
 R1 = Motor(Ports.PORT4, GearSetting.RATIO_6_1, True)
 R2 = Motor(Ports.PORT5, GearSetting.RATIO_6_1, False)
 R3 = Motor(Ports.PORT7, GearSetting.RATIO_6_1, True)
+Belt = Motor(Ports.PORT1, GearSetting.RATIO_18_1, False)
+MogoClamp = DigitalOut(brain.three_wire_port.a)
 controller_1 = Controller(PRIMARY)
 
 
@@ -59,6 +61,24 @@ def when_started1():
         R3.spin(FORWARD, SpeedRight, VOLT)
         wait(5, MSEC)
 
+def clampMogo():
+    MogoClamp.set(True)
+
+def unclampMogo():
+    MogoClamp.set(False)
+
+def startBelt():
+    Belt.set_velocity(100, PERCENT)
+
+def stopBelt():
+    Belt.set_velocity(0, PERCENT)
+
 Thread(when_started1())
-print('hi')
+
+controller_1.buttonR1.pressed(clampMogo)
+controller_1.buttonR2.pressed(unclampMogo)
+controller_1.buttonL1.pressed(startBelt)
+controller_1.buttonL2.pressed(stopBelt)
+
+
 #5th April
